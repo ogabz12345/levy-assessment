@@ -1,0 +1,45 @@
+<div class="form-card">
+  <div class="form-page">
+    <form [formGroup]="fg">
+      <div>
+        <label>Have you ever been pregnant before?</label>
+        <select formControlName="everBeenPregnant" (change)="everPregnant()">
+          <option value="null">Please Select</option>
+          <option value="YES">Yes</option>
+          <option value="NO">No</option>
+        </select>
+      </div>
+
+      <div *ngIf="ifPregnant === 'YES'">
+        <label>Please pick which of the following applies to you.</label>
+        <ng-multiselect-dropdown
+          [settings]="dropdownSettings"
+          [data]="dropdownList"
+          formControlName="optionIfPregnant"
+        >
+        </ng-multiselect-dropdown>
+      </div>
+
+      <div *ngIf="ifPregnant === 'NO'">
+        <label>How old were you when you had your first period? </label>
+        <input
+          type="number"
+          formControlName="firtPeriodAge"
+          placeholder="How old were you when you had your first period?"
+        />
+      </div>
+      <div class="row p-3">
+        <input
+          class="btn btn-secondary btn-block"
+          (click)="cancel()"
+          value="Cancel"
+        />
+        <input
+          class="btn btn-primary btn-block"
+          (click)="submit()"
+          value="Submit"
+        />
+      </div>
+    </form>
+  </div>
+</div>

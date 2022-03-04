@@ -1,0 +1,25 @@
+.toolbar {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background-color: #fcfaf6;
+  color: black;
+  font-weight: 600;
+  padding: 0 2rem 0 2rem;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #fcfaf6;
+  text-align: center;
+  p {
+    color: black;
+    font-size: 12px;
+  }
+}

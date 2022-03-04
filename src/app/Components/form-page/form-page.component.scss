@@ -1,0 +1,38 @@
+input[type="number"],
+select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-page {
+  border-radius: 5px;
+  background-color: #fcfaf5;
+  padding: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 40%;
+  border-radius: 5px;
+}
+
+.form-card {
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+}
+
+:host ::ng-deep {
+  .multiselect-dropdown {
+    .dropdown-btn {
+      .selected-item-container {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}
