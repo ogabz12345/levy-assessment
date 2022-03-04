@@ -14,13 +14,19 @@ export class FormPageComponent implements OnInit {
   ifPregnant = null;
   dropdownList = [
     { id: 1, name: 'Yes, I have had children before' },
-    { id: 2, name: 'Yes, but the pregnancy was not carried to term due to miscarriage(s)' },
-    { id: 3, name: 'Yes, but the pregnancy was not carried to term due to ectopic miscarriage(s)' },
+    {
+      id: 2,
+      name: 'Yes, but the pregnancy was not carried to term due to miscarriage(s)',
+    },
+    {
+      id: 3,
+      name: 'Yes, but the pregnancy was not carried to term due to ectopic miscarriage(s)',
+    },
     { id: 4, name: 'Yes, I had a stillbirth' },
-  ];;
+  ];
   dropdownSettings: IDropdownSettings = {};
 
-  constructor(private fb: FormBuilder, private toastr: ToastrService, private route: Router) {}
+  constructor(private fb: FormBuilder, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.fg = this.fb.group({
@@ -36,10 +42,13 @@ export class FormPageComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 3,
-      allowSearchFilter: true
+      allowSearchFilter: true,
     };
   }
 
+  /**
+   * Check to know if client is pregnant or not
+   */
   everPregnant() {
     const everPre = this.fg.get('everBeenPregnant').value;
     if (everPre === 'YES') {
@@ -53,14 +62,19 @@ export class FormPageComponent implements OnInit {
       this.fg.reset();
     }
   }
-
+  /**
+   * Submit form event.
+   */
   submit() {
     const obj = this.fg.getRawValue();
-    console.log("Saved Object: ", obj);
-    this.toastr.success('We\'ll get back to you.', 'Thank you!');
-    this.cancel()
+    console.log('Saved Object: ', obj);
+    this.toastr.success("We'll get back to you.", 'Thank you!');
+    this.cancel();
   }
 
+  /**
+   * Cancel form event, this also resets the form.
+   */
   cancel() {
     this.ifPregnant = null;
     this.fg.reset();
