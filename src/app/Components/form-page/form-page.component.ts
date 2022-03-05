@@ -3,11 +3,26 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { ToastrService } from 'ngx-toastr';
+import {animate, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-form-page',
   templateUrl: './form-page.component.html',
   styleUrls: ['./form-page.component.scss'],
+  animations: [
+    trigger('slideInLogin', [
+      transition(':enter', [
+        style({transform: 'translateY(-10%)'}),
+        animate('400ms ease-in', style({transform: 'translateX(0%)'}))
+      ]),
+    ]),
+    trigger('slideInMsg', [
+      transition(':enter', [
+        style({transform: 'translateY(-10%)'}),
+        animate('400ms ease-in', style({transform: 'translateY(0%)'}))
+      ]),
+    ]),
+  ]
 })
 export class FormPageComponent implements OnInit {
   fg: FormGroup;

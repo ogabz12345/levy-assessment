@@ -1,4 +1,4 @@
-<div class="form-card">
+<div class="form-card" [@slideInLogin]>
   <div class="form-page">
     <form [formGroup]="fg">
       <div>
@@ -10,7 +10,7 @@
         </select>
       </div>
 
-      <div *ngIf="ifPregnant === 'YES'">
+      <div *ngIf="ifPregnant === 'YES'" [@slideInMsg]>
         <label>Please pick which of the following applies to you.</label>
         <ng-multiselect-dropdown
           [settings]="dropdownSettings"
@@ -20,7 +20,7 @@
         </ng-multiselect-dropdown>
       </div>
 
-      <div *ngIf="ifPregnant === 'NO'">
+      <div *ngIf="ifPregnant === 'NO'" [@slideInMsg]>
         <label>How old were you when you had your first period? </label>
         <input
           type="number"
@@ -29,16 +29,14 @@
         />
       </div>
       <div class="row p-3">
-        <input
+        <button
           class="btn btn-secondary btn-block"
           (click)="cancel()"
-          value="Cancel"
-        />
-        <input
+        >Cancel</button>
+        <button
           class="btn btn-primary btn-block"
           (click)="submit()"
-          value="Submit"
-        />
+        >Submit</button>
       </div>
     </form>
   </div>
